@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        {% extends 'base.html' %}
+        {% block content %}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main-stylesheet.css')}}"/>
+        <div class="hero_image">
+            <div class="hero_text">
+                {% if error %}
+                <form class="sign_in_form" action="http://127.0.0.1:5000/sign_in" method="POST">
+                    <p>password error</p>
+                </form>
+                {% else %}
+                    <form class="sign_in_form" action="http://127.0.0.1:5000/sign_in" method="POST">
+                        <p>username: <input type="text" name="username"></p>
+                        <p>email address: <input type="text" name="email"></p>
+                        <p>password: <input type="password" name="password1"></p>
+                        <p>repeat password: <input type="password" name="password2"></p>
+                        <button>Sign In</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>
